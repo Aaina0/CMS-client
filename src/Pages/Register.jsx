@@ -20,34 +20,39 @@ const Register = () => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const error = Validation(values);
     setErrors(error);
 
     if (!error.name && !error.email && !error.password) {
-      axios
-        .post("https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/register", values, {
-          withCredentials: true,
-        })
-        .then((res) => {
-          if (res.data.success) {
-            toast.success("Account Created Successfully", {
-              position: "top-right",
-              autoClose: 5000,
-            });
-            navigate("/dashboard");
+      try {
+        const res = await axios.post(
+          "https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/register",
+          values,
+          {
+            withCredentials: true,
           }
-
-          // Handle successful response if needed
-        })
-        .catch((err) => {
-          if (err.response && err.response.data.errors) {
-            setServerErrors(err.response.data.errors);
-          } else {
-            console.log(err);
-          }
-        });
+        );
+        if (res.data.success) {
+          toast.success("Account Created Successfully", {
+            position: "top-right",
+            autoClose: 5000,
+          });
+          navigate("/dashboard");
+        } else {
+          setServerErrors([{ msg: "Unknown error occurred." }]);
+        }
+      } catch (err) {
+        if (err.response && err.response.data.errors) {
+          setServerErrors(err.response.data.errors);
+        } else if (err.message === "Network Error") {
+          setServerErrors([{ msg: "Network error, please try again later." }]);
+        } else {
+          console.error("Error creating account:", err);
+          setServerErrors([{ msg: "An unexpected error occurred." }]);
+        }
+      }
     }
   };
 
