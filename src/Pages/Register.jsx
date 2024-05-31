@@ -27,7 +27,7 @@ const Register = () => {
 
     if (!error.name && !error.email && !error.password) {
       axios
-        .post("http://localhost:3000/contactms/register", values, {
+        .post("https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/register", values, {
           withCredentials: true,
         })
         .then((res) => {

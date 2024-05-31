@@ -4,7 +4,12 @@ import "../assets/css/form.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaAt, FaPhoneFlip, FaRegAddressCard, FaUserPlus } from "react-icons/fa6";
+import {
+  FaAt,
+  FaPhoneFlip,
+  FaRegAddressCard,
+  FaUserPlus,
+} from "react-icons/fa6";
 
 const EditContact = () => {
   const [values, setValues] = useState({
@@ -25,11 +30,15 @@ const EditContact = () => {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:3000/contactms/update-contact/${id}`, values, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .put(
+        `https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/update-contact/${id}`,
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => {
         if (res.data && res.data.success) {
           toast.success("Contact Updated Successfully", {
@@ -55,11 +64,14 @@ const EditContact = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/contactms/contacts/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .get(
+        `https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/contacts/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => {
         if (res.data && res.data.success) {
           setValues({

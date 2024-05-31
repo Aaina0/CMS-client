@@ -64,11 +64,14 @@ const Contact = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3000/contactms/contacts", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .get(
+        "https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/contacts",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => {
         if (res.data.success) {
           setContacts(res.data.contacts);
@@ -95,11 +98,14 @@ const Contact = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/contactms/contact/${id}`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          })
+          .delete(
+            `https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/contact/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          )
           .then((res) => {
             if (res.data.success) {
               setContacts(contacts.filter((contact) => contact._id !== id));

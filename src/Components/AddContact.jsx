@@ -29,11 +29,15 @@ const AddContact = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/contactms/add-contact", values, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .post(
+        "https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/add-contact",
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => {
         if (res.data.success) {
           toast.success("Contact Added Successfully", {
