@@ -28,7 +28,7 @@ const Register = () => {
     if (!error.name && !error.email && !error.password) {
       try {
         const res = await axios.post(
-          "https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/register",
+          "https://cms-server-kappa.vercel.app/contactms/register",
           values,
           {
             withCredentials: true,

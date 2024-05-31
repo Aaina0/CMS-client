@@ -31,7 +31,7 @@ const EditContact = () => {
 
     axios
       .put(
-        `https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/update-contact/${id}`,
+        `https://cms-server-kappa.vercel.app/contactms/update-contact/${id}`,
         values,
         {
           headers: {
@@ -64,14 +64,11 @@ const EditContact = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/contacts/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
+      .get(`https://cms-server-kappa.vercel.app/contactms/contacts/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
         if (res.data && res.data.success) {
           setValues({

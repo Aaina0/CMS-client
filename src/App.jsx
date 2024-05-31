@@ -62,7 +62,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/verify", {
+      .get("https://cms-server-kappa.vercel.app/contactms/verify", {
         headers: {
           Authorization: `Berear ${localStorage.getItem("token")}`,
         },

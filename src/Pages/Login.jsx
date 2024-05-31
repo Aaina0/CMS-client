@@ -29,7 +29,7 @@ const Login = () => {
     if (!error.email && !error.password) {
       axios
         .post(
-          "https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/login",
+          "https://cms-server-kappa.vercel.app/contactms/login",
           values,
           {
             withCredentials: true,

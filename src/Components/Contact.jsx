@@ -64,14 +64,11 @@ const Contact = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(
-        "https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/contacts",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
+      .get("https://cms-server-kappa.vercel.app/contactms/contacts", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
         if (res.data.success) {
           setContacts(res.data.contacts);
@@ -99,7 +96,7 @@ const Contact = () => {
       if (result.isConfirmed) {
         axios
           .delete(
-            `https://cms-server-1kg1rp7t3-aaina-s-projects.vercel.app/contactms/contact/${id}`,
+            `https://cms-server-kappa.vercel.app/contactms/contact/${id}`,
             {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
