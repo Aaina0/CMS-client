@@ -1,0 +1,21 @@
+.home {
+  display: flex;
+  color: #ffffff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 92vh;
+  padding-inline: 30px;
+  background-image: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)), url("../pic23.jpg");
+}
+
+.home-title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  word-spacing: 1%;
+}
+
+.home-description {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
